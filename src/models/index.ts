@@ -47,6 +47,13 @@ export interface Notification {
   articleId?: string;
   read: boolean;
   createdAt: string;
+  // Email dispatch fields
+  recipients?: string[];
+  recipientCount?: number;
+  subject?: string;
+  html?: string | null;
+  sentAt?: string | null;
+  status?: 'sent' | 'failed' | 'pending';
 }
 
 export interface Database {

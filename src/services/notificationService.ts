@@ -14,17 +14,28 @@ export function createNotification(params: {
   title: string;
   message: string;
   articleId?: string;
+  recipients?: string[];
+  subject?: string;
+  html?: string | null;
+  sentAt?: string | null;
+  status?: 'sent' | 'failed' | 'pending';
 }): Notification {
   const db = readDb();
 
   const notification: Notification = {
-    id: generateId('notif'),
-    type: params.type,
-    title: params.title,
-    message: params.message,
-    articleId: params.articleId,
-    read: false,
-    createdAt: new Date().toISOString(),
+    id:             generateId('notif'),
+    type:           params.type,
+    title:          params.title,
+    message:        params.message,
+    articleId:      params.articleId,
+    read:           false,
+    createdAt:      new Date().toISOString(),
+    recipients:     params.recipients,
+    recipientCount: params.recipients?.length,
+    subject:        params.subject,
+    html:           params.html,
+    sentAt:         params.sentAt,
+    status:         params.status,
   };
 
   db.notifications.unshift(notification);

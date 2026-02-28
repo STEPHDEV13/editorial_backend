@@ -3,6 +3,7 @@ import * as articleService from '../services/articleService';
 import * as notificationService from '../services/notificationService';
 import * as networkService from '../services/networkService';
 import { buildArticleNotificationEmail } from '../utils/emailTemplate';
+import { sendMail } from '../utils/mailer';
 import { ArticleFilters } from '../models';
 
 export function getArticles(req: Request, res: Response, next: NextFunction): void {
@@ -93,9 +94,14 @@ export function patchArticleStatus(
   }
 }
 
-export function notifyArticle(req: Request, res: Response, next: NextFunction): void {
+export async function notifyArticle(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
     const article = articleService.getArticleById(req.params.id);
+
+    const recipients: string[] = Array.isArray(req.body?.recipients)
+      ? req.body.recipients.filter((r: unknown) => typeof r === 'string' && r.trim())
+      : [];
+    const subject: string = req.body?.subject?.trim() || `Nouvel article : ${article.title}`;
 
     // Retrieve network name if applicable
     let networkName: string | undefined;
@@ -105,30 +111,44 @@ export function notifyArticle(req: Request, res: Response, next: NextFunction): 
       networkName = network?.name;
     }
 
-    // Build the email HTML (reusable template)
-    const emailHtml = buildArticleNotificationEmail({
+    // Build the email HTML
+    const html = buildArticleNotificationEmail({
       title: 'Nouvelle publication éditoriale',
       articleTitle: article.title,
       articleExcerpt: article.excerpt,
-      articleUrl: `http://localhost:5173/articles/${article.slug}`,
+      articleUrl: `${process.env.FRONTEND_URL || 'http://localhost:5173'}/articles/${article.slug}`,
       authorName: article.authorName,
       publishedAt: article.publishedAt ?? new Date().toISOString(),
       networkName,
     });
 
-    // Store notification in database
+    // Attempt email delivery
+    let status: 'sent' | 'failed' = 'sent';
+    let sentAt: string | null = null;
+    if (recipients.length > 0) {
+      try {
+        await sendMail({ to: recipients, subject, html });
+        sentAt = new Date().toISOString();
+      } catch (mailErr) {
+        console.error('[mailer] sendMail failed:', mailErr);
+        status = 'failed';
+      }
+    }
+
+    // Store notification record
     const notification = notificationService.createNotification({
-      type: 'success',
-      title: 'Notification envoyée',
-      message: `Une notification a été envoyée pour l'article : « ${article.title} »`,
-      articleId: article.id,
+      type:       status === 'sent' ? 'success' : 'error',
+      title:      status === 'sent' ? 'Notification envoyée' : 'Échec de l\'envoi',
+      message:    `Article : « ${article.title} » — ${recipients.length} destinataire(s)`,
+      articleId:  article.id,
+      recipients,
+      subject,
+      html,
+      sentAt,
+      status,
     });
 
-    res.json({
-      message: 'Notification created successfully',
-      notification,
-      emailPreview: emailHtml,
-    });
+    res.json({ html, message: notification.message, notification });
   } catch (err) {
     next(err);
   }
