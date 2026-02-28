@@ -3,7 +3,10 @@ import * as networkController from '../controllers/networkController';
 
 const router = Router();
 
-// GET /api/networks
-router.get('/', networkController.getNetworks);
+router.get('/',        networkController.getNetworks);
+router.get('/:id',     networkController.getNetwork);
+router.post('/',       networkController.createNetwork);
+router.put('/:id',     networkController.updateNetwork);
+router.delete('/:id',  networkController.deleteNetwork);
 
 export default router;
