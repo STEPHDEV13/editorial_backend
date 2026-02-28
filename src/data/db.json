@@ -246,7 +246,7 @@
       "slug": "budget-2025-gouvernement-effort-sobriete-inedit",
       "excerpt": "Confronté à un déficit public supérieur aux prévisions, l'exécutif prépare un budget d'austérité modérée visant à réduire les dépenses de l'État de 20 milliards d'euros.",
       "content": "<p>Le ministère de l'Économie a confirmé que le projet de loi de finances pour 2025 intégrera un effort de réduction des dépenses publiques sans précédent depuis la crise de 2010. Tous les ministères devront contribuer, avec des efforts différenciés selon les priorités gouvernementales.</p><p>L'éducation et la santé bénéficieront de protections partielles, tandis que les dépenses de fonctionnement et les subventions aux organismes publics seront revues à la baisse. Les arbitrages finaux seront rendus en juin avant la présentation officielle au Parlement en septembre.</p>",
-      "status": "draft",
+      "status": "published",
       "featured": false,
       "categoryIds": [
         "cat-001",
@@ -255,9 +255,9 @@
       "networkId": "net-001",
       "authorName": "Sophie Marchand",
       "coverImageUrl": "https://placehold.co/1200x630?text=Budget+2025",
-      "publishedAt": null,
+      "publishedAt": "2026-02-28T17:10:09.095Z",
       "createdAt": "2024-04-01T09:00:00.000Z",
-      "updatedAt": "2024-04-01T09:00:00.000Z"
+      "updatedAt": "2026-02-28T17:10:09.095Z"
     },
     {
       "id": "art-011",
@@ -298,6 +298,77 @@
     }
   ],
   "notifications": [
+    {
+      "id": "notif-c2951656-8b6e-4c9b-a1a3-9ee03fb29ff1",
+      "type": "success",
+      "title": "Import d'articles terminé",
+      "message": "3 article(s) importé(s). 0 ignoré(s).",
+      "read": false,
+      "createdAt": "2026-02-28T17:53:11.039Z"
+    },
+    {
+      "id": "notif-6a57c30d-2920-4851-93f6-fa2f40b48a79",
+      "type": "warning",
+      "title": "Import d'articles terminé",
+      "message": "0 article(s) importé(s). 3 ignoré(s).",
+      "read": false,
+      "createdAt": "2026-02-28T17:51:34.597Z"
+    },
+    {
+      "id": "notif-669ac179-b1b9-4eaa-b0c1-dd6912800ef5",
+      "type": "warning",
+      "title": "Import d'articles terminé",
+      "message": "0 article(s) importé(s). 3 ignoré(s).",
+      "read": false,
+      "createdAt": "2026-02-28T17:48:59.252Z"
+    },
+    {
+      "id": "notif-1cb5bd8e-2fcd-4f99-bef7-562b778d551f",
+      "type": "success",
+      "title": "Notification envoyée",
+      "message": "Article : « test sans resume » — 0 destinataire(s)",
+      "articleId": "art-aaf209e8-63c6-44b7-9ca6-557482091dcd",
+      "read": false,
+      "createdAt": "2026-02-28T17:14:55.877Z",
+      "recipients": [],
+      "recipientCount": 0,
+      "subject": "Nouvel article : test sans resume",
+      "html": "<!DOCTYPE html>\n<html lang=\"fr\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  <title>Nouvelle publication éditoriale</title>\n  <style>\n    body {\n      margin: 0;\n      padding: 0;\n      background-color: #f5f5f5;\n      font-family: 'Helvetica Neue', Arial, sans-serif;\n      color: #333333;\n    }\n    .wrapper {\n      max-width: 600px;\n      margin: 40px auto;\n      background-color: #ffffff;\n      border-radius: 8px;\n      overflow: hidden;\n      box-shadow: 0 2px 8px rgba(0,0,0,0.08);\n    }\n    .header {\n      background-color: #1a1a2e;\n      padding: 28px 32px;\n      text-align: center;\n    }\n    .header h1 {\n      color: #ffffff;\n      font-size: 22px;\n      margin: 0;\n      font-weight: 700;\n      letter-spacing: 0.5px;\n    }\n    .header p.network {\n      color: #a0aec0;\n      font-size: 13px;\n      margin: 6px 0 0;\n    }\n    .body {\n      padding: 32px;\n    }\n    .label {\n      font-size: 11px;\n      font-weight: 700;\n      text-transform: uppercase;\n      letter-spacing: 1px;\n      color: #e63946;\n      margin-bottom: 8px;\n    }\n    .article-title {\n      font-size: 22px;\n      font-weight: 700;\n      color: #1a1a2e;\n      margin: 0 0 16px;\n      line-height: 1.3;\n    }\n    .excerpt {\n      font-size: 15px;\n      color: #555555;\n      line-height: 1.7;\n      margin: 0 0 24px;\n    }\n    .meta {\n      font-size: 13px;\n      color: #888888;\n      border-top: 1px solid #eeeeee;\n      padding-top: 16px;\n      margin-bottom: 24px;\n    }\n    .meta strong {\n      color: #555555;\n    }\n    .cta {\n      display: inline-block;\n      background-color: #e63946;\n      color: #ffffff;\n      text-decoration: none;\n      padding: 12px 28px;\n      border-radius: 6px;\n      font-size: 14px;\n      font-weight: 600;\n      letter-spacing: 0.3px;\n    }\n    .footer {\n      background-color: #f9f9f9;\n      padding: 20px 32px;\n      text-align: center;\n      font-size: 12px;\n      color: #aaaaaa;\n      border-top: 1px solid #eeeeee;\n    }\n  </style>\n</head>\n<body>\n  <div class=\"wrapper\">\n    <div class=\"header\">\n      <h1>Nouvelle publication éditoriale</h1>\n      <p class=\"network\">Le Quotidien National</p>\n    </div>\n    <div class=\"body\">\n      <p class=\"label\">Nouvel article publié</p>\n      <h2 class=\"article-title\">test sans resume</h2>\n      <p class=\"excerpt\">afsfdasf dskjfahdjsfhaljsdf hakd fakj</p>\n      <div class=\"meta\">\n        <strong>Auteur :</strong> dafssfsa<br />\n        <strong>Publié le :</strong> 28 février 2026\n      </div>\n      <a href=\"http://localhost:3000/articles/test-sans-resume\" class=\"cta\">Lire l'article complet</a>\n    </div>\n    <div class=\"footer\">\n      Vous recevez cet e-mail car vous êtes abonné aux notifications éditoriales.<br />\n      &copy; 2026 CMS Editorial – Tous droits réservés.\n    </div>\n  </div>\n</body>\n</html>",
+      "sentAt": null,
+      "status": "sent"
+    },
+    {
+      "id": "notif-96b8e449-5c5b-485b-9378-9e679916e7ba",
+      "type": "success",
+      "title": "Notification envoyée",
+      "message": "Article : « test test » — 1 destinataire(s)",
+      "articleId": "art-dcf58ea5-fc09-4f04-a1fc-2951cafb0e6f",
+      "read": false,
+      "createdAt": "2026-02-28T17:11:53.808Z",
+      "recipients": [
+        "stephanethannio@gmail.com"
+      ],
+      "recipientCount": 1,
+      "subject": "Nouvel article : test test",
+      "html": "<!DOCTYPE html>\n<html lang=\"fr\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  <title>Nouvelle publication éditoriale</title>\n  <style>\n    body {\n      margin: 0;\n      padding: 0;\n      background-color: #f5f5f5;\n      font-family: 'Helvetica Neue', Arial, sans-serif;\n      color: #333333;\n    }\n    .wrapper {\n      max-width: 600px;\n      margin: 40px auto;\n      background-color: #ffffff;\n      border-radius: 8px;\n      overflow: hidden;\n      box-shadow: 0 2px 8px rgba(0,0,0,0.08);\n    }\n    .header {\n      background-color: #1a1a2e;\n      padding: 28px 32px;\n      text-align: center;\n    }\n    .header h1 {\n      color: #ffffff;\n      font-size: 22px;\n      margin: 0;\n      font-weight: 700;\n      letter-spacing: 0.5px;\n    }\n    .header p.network {\n      color: #a0aec0;\n      font-size: 13px;\n      margin: 6px 0 0;\n    }\n    .body {\n      padding: 32px;\n    }\n    .label {\n      font-size: 11px;\n      font-weight: 700;\n      text-transform: uppercase;\n      letter-spacing: 1px;\n      color: #e63946;\n      margin-bottom: 8px;\n    }\n    .article-title {\n      font-size: 22px;\n      font-weight: 700;\n      color: #1a1a2e;\n      margin: 0 0 16px;\n      line-height: 1.3;\n    }\n    .excerpt {\n      font-size: 15px;\n      color: #555555;\n      line-height: 1.7;\n      margin: 0 0 24px;\n    }\n    .meta {\n      font-size: 13px;\n      color: #888888;\n      border-top: 1px solid #eeeeee;\n      padding-top: 16px;\n      margin-bottom: 24px;\n    }\n    .meta strong {\n      color: #555555;\n    }\n    .cta {\n      display: inline-block;\n      background-color: #e63946;\n      color: #ffffff;\n      text-decoration: none;\n      padding: 12px 28px;\n      border-radius: 6px;\n      font-size: 14px;\n      font-weight: 600;\n      letter-spacing: 0.3px;\n    }\n    .footer {\n      background-color: #f9f9f9;\n      padding: 20px 32px;\n      text-align: center;\n      font-size: 12px;\n      color: #aaaaaa;\n      border-top: 1px solid #eeeeee;\n    }\n  </style>\n</head>\n<body>\n  <div class=\"wrapper\">\n    <div class=\"header\">\n      <h1>Nouvelle publication éditoriale</h1>\n      <p class=\"network\">Média Plus</p>\n    </div>\n    <div class=\"body\">\n      <p class=\"label\">Nouvel article publié</p>\n      <h2 class=\"article-title\">test test</h2>\n      <p class=\"excerpt\">sdafdfdasfasfsafds</p>\n      <div class=\"meta\">\n        <strong>Auteur :</strong> Moi<br />\n        <strong>Publié le :</strong> 28 février 2026\n      </div>\n      <a href=\"http://localhost:3000/articles/test-test\" class=\"cta\">Lire l'article complet</a>\n    </div>\n    <div class=\"footer\">\n      Vous recevez cet e-mail car vous êtes abonné aux notifications éditoriales.<br />\n      &copy; 2026 CMS Editorial – Tous droits réservés.\n    </div>\n  </div>\n</body>\n</html>",
+      "sentAt": "2026-02-28T17:11:53.808Z",
+      "status": "sent"
+    },
+    {
+      "id": "notif-7679868a-0dbe-4270-a418-0cdd278b668c",
+      "type": "success",
+      "title": "Notification envoyée",
+      "message": "Article : « test test » — 0 destinataire(s)",
+      "articleId": "art-dcf58ea5-fc09-4f04-a1fc-2951cafb0e6f",
+      "read": false,
+      "createdAt": "2026-02-28T17:11:27.272Z",
+      "recipients": [],
+      "recipientCount": 0,
+      "subject": "Nouvel article : test test",
+      "html": "<!DOCTYPE html>\n<html lang=\"fr\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  <title>Nouvelle publication éditoriale</title>\n  <style>\n    body {\n      margin: 0;\n      padding: 0;\n      background-color: #f5f5f5;\n      font-family: 'Helvetica Neue', Arial, sans-serif;\n      color: #333333;\n    }\n    .wrapper {\n      max-width: 600px;\n      margin: 40px auto;\n      background-color: #ffffff;\n      border-radius: 8px;\n      overflow: hidden;\n      box-shadow: 0 2px 8px rgba(0,0,0,0.08);\n    }\n    .header {\n      background-color: #1a1a2e;\n      padding: 28px 32px;\n      text-align: center;\n    }\n    .header h1 {\n      color: #ffffff;\n      font-size: 22px;\n      margin: 0;\n      font-weight: 700;\n      letter-spacing: 0.5px;\n    }\n    .header p.network {\n      color: #a0aec0;\n      font-size: 13px;\n      margin: 6px 0 0;\n    }\n    .body {\n      padding: 32px;\n    }\n    .label {\n      font-size: 11px;\n      font-weight: 700;\n      text-transform: uppercase;\n      letter-spacing: 1px;\n      color: #e63946;\n      margin-bottom: 8px;\n    }\n    .article-title {\n      font-size: 22px;\n      font-weight: 700;\n      color: #1a1a2e;\n      margin: 0 0 16px;\n      line-height: 1.3;\n    }\n    .excerpt {\n      font-size: 15px;\n      color: #555555;\n      line-height: 1.7;\n      margin: 0 0 24px;\n    }\n    .meta {\n      font-size: 13px;\n      color: #888888;\n      border-top: 1px solid #eeeeee;\n      padding-top: 16px;\n      margin-bottom: 24px;\n    }\n    .meta strong {\n      color: #555555;\n    }\n    .cta {\n      display: inline-block;\n      background-color: #e63946;\n      color: #ffffff;\n      text-decoration: none;\n      padding: 12px 28px;\n      border-radius: 6px;\n      font-size: 14px;\n      font-weight: 600;\n      letter-spacing: 0.3px;\n    }\n    .footer {\n      background-color: #f9f9f9;\n      padding: 20px 32px;\n      text-align: center;\n      font-size: 12px;\n      color: #aaaaaa;\n      border-top: 1px solid #eeeeee;\n    }\n  </style>\n</head>\n<body>\n  <div class=\"wrapper\">\n    <div class=\"header\">\n      <h1>Nouvelle publication éditoriale</h1>\n      <p class=\"network\">Média Plus</p>\n    </div>\n    <div class=\"body\">\n      <p class=\"label\">Nouvel article publié</p>\n      <h2 class=\"article-title\">test test</h2>\n      <p class=\"excerpt\">sdafdfdasfasfsafds</p>\n      <div class=\"meta\">\n        <strong>Auteur :</strong> Moi<br />\n        <strong>Publié le :</strong> 28 février 2026\n      </div>\n      <a href=\"http://localhost:3000/articles/test-test\" class=\"cta\">Lire l'article complet</a>\n    </div>\n    <div class=\"footer\">\n      Vous recevez cet e-mail car vous êtes abonné aux notifications éditoriales.<br />\n      &copy; 2026 CMS Editorial – Tous droits réservés.\n    </div>\n  </div>\n</body>\n</html>",
+      "sentAt": null,
+      "status": "sent"
+    },
     {
       "id": "notif-0b072215-1abe-4b16-8d13-5df1bb805062",
       "type": "success",
