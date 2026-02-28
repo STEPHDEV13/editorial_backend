@@ -14,6 +14,9 @@ API REST complète pour un back-office de gestion de contenus éditoriaux. Elle 
 | **Express** | Framework HTTP REST |
 | **TypeScript** | Typage statique, maintenabilité |
 | **Zod** | Validation des données côté serveur |
+| **Nodemailer** | Envoi d'emails via SMTP |
+| **Multer** | Gestion des uploads multipart |
+| **dotenv** | Gestion des variables d'environnement |
 | **JSON file storage** | Persistance légère via `src/data/db.json` |
 | **UUID** | Génération d'identifiants uniques |
 | **ts-node-dev** | Rechargement automatique en développement |
@@ -41,11 +44,24 @@ npm install
 cp .env.example .env
 ```
 
-Contenu du `.env` :
+Contenu du `.env` (basé sur `.env.example`) :
 
-```
+```env
 PORT=4000
 NODE_ENV=development
+
+# URL du frontend (utilisée dans les liens d'articles dans les emails)
+FRONTEND_URL=http://localhost:3000
+
+# ── SMTP (Nodemailer) ────────────────────────────────────────────────────────
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_SECURE=false
+SMTP_USER=votre@email.com
+SMTP_PASS=votre_mot_de_passe
+SMTP_FROM="Editorial CMS" <votre@email.com>
+# Mettre à false si SMTP_HOST est une adresse IP
+SMTP_TLS_REJECT_UNAUTHORIZED=true
 ```
 
 ### 4. Lancer en mode développement
@@ -188,19 +204,42 @@ Réponse `200` : objet `Article` mis à jour.
 
 ---
 
-#### `POST /api/articles/:id/notify` — Envoyer une notification
+#### `POST /api/articles/:id/notify` — Envoyer une notification par email
 
-Génère une notification en base et retourne un aperçu HTML de l'email.
+Envoie un email aux destinataires via SMTP, crée un enregistrement de notification et retourne le HTML généré.
+
+**Body JSON (optionnel) :**
+
+```json
+{
+  "recipients": ["destinataire@exemple.com", "autre@exemple.com"],
+  "subject": "Nouvel article : Mon titre"
+}
+```
+
+- `recipients` : liste d'adresses email. Si vide ou absent, aucun email n'est envoyé mais la notification est quand même enregistrée.
+- `subject` : objet de l'email (défaut : `"Nouvel article : <titre de l'article>"`).
 
 **Réponse `200` :**
 
 ```json
 {
-  "message": "Notification created successfully",
-  "notification": { "id": "notif-xxx", "type": "success" },
-  "emailPreview": "<!DOCTYPE html>..."
+  "html": "<!DOCTYPE html>...",
+  "message": "Article : « Mon titre » — 2 destinataire(s)",
+  "notification": {
+    "id": "notif-xxx",
+    "type": "success",
+    "title": "Notification envoyée",
+    "recipients": ["destinataire@exemple.com"],
+    "recipientCount": 1,
+    "subject": "Nouvel article : Mon titre",
+    "sentAt": "2024-03-10T07:30:05.000Z",
+    "status": "sent"
+  }
 }
 ```
+
+> Si l'envoi SMTP échoue, `type` vaut `"error"` et `status` vaut `"failed"`. La notification est tout de même persistée.
 
 ---
 
@@ -301,16 +340,23 @@ Réponse `204`. Les références dans les articles sont automatiquement nettoyé
 
 #### `GET /api/notifications` — Lister les notifications
 
+Retourne les notifications triées par date décroissante.
+
 ```json
 [
   {
     "id": "notif-001",
     "type": "success",
-    "title": "Article publié",
-    "message": "L'article a été publié.",
+    "title": "Notification envoyée",
+    "message": "Article : « Mon titre » — 2 destinataire(s)",
     "articleId": "art-005",
     "read": false,
-    "createdAt": "2024-03-10T07:30:05.000Z"
+    "createdAt": "2024-03-10T07:30:05.000Z",
+    "recipients": ["user@exemple.com"],
+    "recipientCount": 1,
+    "subject": "Nouvel article : Mon titre",
+    "sentAt": "2024-03-10T07:30:05.000Z",
+    "status": "sent"
   }
 ]
 ```
@@ -351,6 +397,8 @@ src/
     ├── fileStorage.ts          # Lecture/écriture du db.json
     ├── idGenerator.ts          # Génération d'UUID avec préfixe
     ├── slugify.ts              # Génération de slug URL-safe
+    ├── helpers.ts              # Utilitaires partagés (generateId, slugify, now)
+    ├── mailer.ts               # Transporteur SMTP Nodemailer + sendMail()
     └── emailTemplate.ts        # Template HTML email réutilisable
 ```
 
@@ -374,8 +422,7 @@ Le fichier `src/data/db.json` est pré-rempli au démarrage avec :
 - **Authentification** : JWT + middleware de protection des routes (rôles admin/éditeur)
 - **Base de données réelle** : migration vers PostgreSQL ou SQLite avec Prisma/Drizzle
 - **Pagination SQL** : `OFFSET / LIMIT` avec index pour de meilleures performances sur grands volumes
-- **Upload d'images** : intégration Multer + stockage S3/Cloudinary pour les images de couverture
-- **Envoi d'emails réel** : intégration Nodemailer ou Resend pour l'envoi effectif des notifications
+- **Upload d'images** : stockage S3/Cloudinary pour les images de couverture (Multer déjà intégré)
 - **Tests automatisés** : Jest + Supertest pour les routes et services
 - **Swagger / OpenAPI** : documentation interactive générée depuis les schémas Zod
 - **Rate limiting** : protection contre les abus via `express-rate-limit`
